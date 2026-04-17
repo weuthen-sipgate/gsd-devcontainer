@@ -4,12 +4,10 @@ A ready-to-use template for AI-assisted software development with [Claude Code](
 
 ## What's included
 
-| Component | Purpose |
-|---|---|
-| `.devcontainer/` | Docker-based dev container with Claude Code pre-installed |
+| Component                        | Purpose                                                            |
+| -------------------------------- | ------------------------------------------------------------------ |
+| `.devcontainer/`                 | Docker-based dev container with Claude Code pre-installed          |
 | `.devcontainer/init-firewall.sh` | iptables/ipset firewall that limits network egress to an allowlist |
-| `.claude/get-shit-done/` | GSD framework v1.32.0 — workflows, agents, templates |
-| `.claude/settings.json` | Pre-configured hooks (prompt guard, read guard, context monitor) |
 
 ## Security model
 
@@ -34,21 +32,25 @@ This prevents Claude Code from exfiltrating code or credentials to arbitrary hos
 ### Setup
 
 1. **Use this template** — click "Use this template" on GitHub, or clone directly:
+
    ```sh
    git clone <this-repo> my-project
    cd my-project
    ```
 
 2. **Add your credentials** — copy the example and fill in your tokens:
+
    ```sh
    cp credentials.env.example credentials.env
    # Edit credentials.env and add your GH_TOKEN and ANTHROPIC_API_KEY
    ```
 
 3. **Open in VS Code and reopen in container:**
+
    ```
    Ctrl+Shift+P → Dev Containers: Reopen in Container
    ```
+
    The container will build, install Claude Code, apply GSD, and start the firewall automatically.
 
 4. **Start a new project with GSD:**
@@ -83,13 +85,13 @@ GSD structures development into **phases** with a discuss → plan → execute �
 
 Key commands for day-to-day use:
 
-| Command | What it does |
-|---|---|
-| `/gsd-progress` | Show current phase status and route to next action |
-| `/gsd-fast` | Execute a small task inline without full planning overhead |
-| `/gsd-debug` | Systematic bug investigation with persistent state |
-| `/gsd-resume-work` | Restore full context from a previous session |
-| `/gsd-help` | List all available GSD commands |
+| Command            | What it does                                               |
+| ------------------ | ---------------------------------------------------------- |
+| `/gsd-progress`    | Show current phase status and route to next action         |
+| `/gsd-fast`        | Execute a small task inline without full planning overhead |
+| `/gsd-debug`       | Systematic bug investigation with persistent state         |
+| `/gsd-resume-work` | Restore full context from a previous session               |
+| `/gsd-help`        | List all available GSD commands                            |
 
 ## Dev container details
 
@@ -110,14 +112,14 @@ The Claude config directory (`/home/node/.claude`) and bash history are stored i
 
 The following hooks run automatically and are configured in `.claude/settings.json`:
 
-| Hook | Trigger | Purpose |
-|---|---|---|
-| `gsd-check-update.js` | Session start | Notify when a GSD update is available |
-| `gsd-context-monitor.js` | After Bash/Edit/Write/Agent | Track context window usage |
-| `gsd-prompt-guard.js` | Before Write/Edit | Prevent accidental overwrites of planning artifacts |
-| `gsd-read-guard.js` | Before Write/Edit | Validate file read before edit |
-| `gsd-validate-commit.sh` | Before Bash | Enforce GSD commit message format |
-| `gsd-statusline.js` | Status line | Show current phase and plan in Claude Code status bar |
+| Hook                     | Trigger                     | Purpose                                               |
+| ------------------------ | --------------------------- | ----------------------------------------------------- |
+| `gsd-check-update.js`    | Session start               | Notify when a GSD update is available                 |
+| `gsd-context-monitor.js` | After Bash/Edit/Write/Agent | Track context window usage                            |
+| `gsd-prompt-guard.js`    | Before Write/Edit           | Prevent accidental overwrites of planning artifacts   |
+| `gsd-read-guard.js`      | Before Write/Edit           | Validate file read before edit                        |
+| `gsd-validate-commit.sh` | Before Bash                 | Enforce GSD commit message format                     |
+| `gsd-statusline.js`      | Status line                 | Show current phase and plan in Claude Code status bar |
 
 ## Customizing the allowlist
 
