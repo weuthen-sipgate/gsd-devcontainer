@@ -55,7 +55,7 @@
   },
   "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=delegated",
   "workspaceFolder": "/workspace",
-  "postCreateCommand": "npx --yes npx @opengsd/get-shit-done-redux@latest --claude --local",
+  "postCreateCommand": "npx --yes @opengsd/get-shit-done-redux@latest --claude --local",
   "postStartCommand": {
     "firewall": "sudo GH_TOKEN=${GH_TOKEN} /usr/local/bin/init-firewall.sh",
     "remove-ssh-access": "find /tmp -maxdepth 1 -name 'vscode-ssh-auth-*.sock' -delete || true"
