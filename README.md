@@ -17,7 +17,7 @@ The dev container enforces **network-level egress restrictions** at startup via 
 - `registry.npmjs.org` — npm packages
 - GitHub IP ranges (fetched dynamically from `api.github.com/meta`)
 - `marketplace.visualstudio.com`, `vscode.blob.core.windows.net`, `update.code.visualstudio.com` — VS Code extensions
-- `statsig.anthropic.com`, `statsig.com`, `sentry.io` — Anthropic telemetry
+- `statsig.com`, `sentry.io` — Anthropic telemetry
 
 This prevents Claude Code from exfiltrating code or credentials to arbitrary hosts, even in fully autonomous mode.
 
